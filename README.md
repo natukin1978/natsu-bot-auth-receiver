@@ -1,1 +1,1 @@
-# twitch-redirect-url-receiver
+# natsu-bot-auth-receiver
