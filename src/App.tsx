@@ -31,8 +31,8 @@ function App() {
 
   return (
     <>
-      <h2>
-        ナツBOT OAuth認証
+      <h2 style={{ borderBottom: "1px solid #000" }}>
+        ナツキソBOT OAuth認証
       </h2>
       <h3>
         作業手順
