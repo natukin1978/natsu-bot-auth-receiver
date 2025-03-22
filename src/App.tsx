@@ -26,6 +26,21 @@ const auth_infos = [
       "moderator:manage:banned_users",
     ],
   },
+  {
+    title: "Twitchの外国語を翻訳するBOT",
+    application_link: "https://github.com/natukin1978/twitch-chat-trans-bot",
+    scopes: [
+      "chat:read",
+      "chat:edit",
+    ],
+  },
+  {
+    title: "Twitchから\"3tene\"にショートカット送信",
+    application_link: "https://github.com/natukin1978/twitch-chat-to-3tene",
+    scopes: [
+      "chat:read",
+    ],
+  },
 ];
 
 function App() {
