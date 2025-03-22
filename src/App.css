@@ -51,6 +51,11 @@ th, td {
   border-bottom: 1px solid silver;
 }
 
+ul {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
 .a_to_button {
   display: block;
   padding: 12px 0;
@@ -58,6 +63,8 @@ th, td {
   color: white;
   text-align: center;
   border-radius: 4px;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
 }
 
 .a_to_button:hover {

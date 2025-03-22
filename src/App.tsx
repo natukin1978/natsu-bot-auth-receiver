@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
-const text_twitch_auth = "Twitch認証";
+const text_twitch_auth = "Twitchで認証";
 
 const get_url_twitch_auth = (scopes: string[]): string => {
   const scope = scopes.join(" ");
@@ -71,7 +71,7 @@ function App() {
           <li>ログインページが表示されず、違うユーザーが表示されたら、一度Twitchのページでログアウトしてください</li>
           <li>表示ユーザーで問題なければ、認証(Authorize)を押してください</li>
           <li>正常に処理が進むと、このページに戻って来るので access_token の値をコピーします</li>
-          <li>アプリの config.json を開いて、twitch.accessToken に設定して保存してください</li>
+          <li>対象アプリの config.json を開いて、twitch.accessToken に設定してください</li>
         </ol>
       </div>
       {accessToken && (
