@@ -59,6 +59,18 @@ function App() {
           <li>アプリの config.json を開いて、twitch.accessToken に設定して保存してください</li>
         </ol>
       </div>
+      {accessToken && (
+        <div>
+          <h3>
+            結果
+          </h3>
+          <label>
+            access_token
+          </label>
+          &nbsp;:&nbsp;
+          <input type="text" value={accessToken} size={30} readOnly />
+        </div>
+      )}
       <div>
         <h3>
           一覧
@@ -100,18 +112,6 @@ function App() {
           </tbody>
         </table>
       </div>
-      {accessToken && (
-        <div>
-          <h3>
-            結果
-          </h3>
-          <label>
-            access_token
-          </label>
-          &nbsp;:&nbsp;
-          <input type="text" value={accessToken} size={30} readOnly />
-        </div>
-      )}
       <div>
         <h3>
           その他
