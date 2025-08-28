@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react'
-import './App.css'
+import { useState, useEffect } from "react"
+import "./App.css"
 
 const text_twitch_auth = "Twitchで認証";
+
+const client_id = "g1gb6b5as9zb48wlde0v0ux3frg2i3";
 
 const get_url_twitch_auth = (scopes: string[]): string => {
   const scope = scopes.join(" ");
   const params = {
-    client_id: "g1gb6b5as9zb48wlde0v0ux3frg2i3",
+    client_id: client_id,
     redirect_uri: "https://natukin1978.github.io/natsu-bot-auth-receiver/",
     response_type: "token",
     scope: scope,
@@ -83,7 +85,7 @@ function App() {
             access_token
           </label>
           &nbsp;:&nbsp;
-          <input type="text" value={accessToken} size={30} readOnly />
+          <input value={accessToken} size={30} readOnly />
         </div>
       )}
       <div>
