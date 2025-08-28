@@ -57,7 +57,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div>
       <h2 style={{ borderBottom: "1px solid #000" }}>
         ナツキソBOT OAuth認証
       </h2>
@@ -136,7 +136,7 @@ function App() {
           Github
         </a>
       </div>
-    </>
+    </div>
   )
 }
 
