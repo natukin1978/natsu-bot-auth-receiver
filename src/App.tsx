@@ -48,6 +48,9 @@ const auth_infos = [
 function App() {
   const [accessToken, setAccessToken] = useState<string>("");
 
+  const [disableToken, setDisableToken] = useState<string>("");
+  const [disableTokenMessage, setDisableTokenMessage] = useState<string>("");
+
   useEffect(() => {
     const hash = window.location.hash;
     if (hash) {
@@ -57,6 +60,47 @@ function App() {
       }
     }
   }, []);
+
+  const revokeTwitchToken = async (): Promise<void> => {
+    const end_point = "https://id.twitch.tv/oauth2/revoke";
+
+    // 送信するデータをURLエンコード形式で準備します。
+    const params = new URLSearchParams();
+    params.append("client_id", client_id);
+    params.append("token", disableToken);
+
+    const response = await fetch(end_point, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: params,
+    });
+
+    // レスポンスが成功したか（ステータスコードが200番台か）をチェックします。
+    // Twitchのドキュメントによると、成功時は 200 OK が返されます。
+    if (!response.ok) {
+      // エラーレスポンスの内容を読み取って、より詳細なエラーメッセージを作成します。
+      const errorData = await response.json();
+      throw new Error(
+        `トークンの無効化に失敗しました。ステータス: ${response.status} - ${errorData.message || "不明なエラー"}`
+      );
+    }
+  };
+
+  const doDisableToken = async () => {
+    if (!disableToken) return;
+    try {
+      await revokeTwitchToken();
+      setDisableTokenMessage("正常に無効化しました。");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setDisableTokenMessage(error.message);
+      } else {
+        setDisableTokenMessage("処理に失敗しました。");
+      }
+    }
+  };
 
   return (
     <div>
@@ -128,6 +172,23 @@ function App() {
             }
           </tbody>
         </table>
+      </div>
+      <div>
+        <h3>
+          無効化
+        </h3>
+        使わなくなったトークンを無効化します。
+        <div>
+          <label>
+            access_token
+          </label>
+          &nbsp;:&nbsp;
+          <input value={disableToken} onChange={e => setDisableToken(e.target.value)} size={30} />
+          <button onClick={doDisableToken} className="button" style={{ marginLeft: "1em" }}>送信</button>
+        </div>
+        <div>
+          {disableTokenMessage}
+        </div>
       </div>
       <div>
         <h3>
