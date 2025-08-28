@@ -101,7 +101,7 @@ function App() {
           <tbody>
             {
               auth_infos.map(auth_info => (
-                <tr>
+                <tr key={auth_info.title}>
                   <td>
                     <a href={auth_info.application_link} target="_blank" rel="noopener noreferrer">
                       {auth_info.title}
@@ -116,7 +116,7 @@ function App() {
                     <ul>
                       {
                         auth_info.scopes.map(scope => (
-                          <li>{scope}</li>
+                          <li key={auth_info.title + scope}>{scope}</li>
                         ))
                       }
                     </ul>
