@@ -1,0 +1,41 @@
+{
+  "title": "Natukiso BOT OAuth Authentication",
+  "steps": {
+    "title": "Steps",
+    "step1": "Click the [Authenticate with Twitch] button below.",
+    "step2": "When the Twitch login page appears, log in with the account you want to use for the bot.",
+    "step3": "If the login page doesn't appear and a different user is shown, log out from the Twitch website first.",
+    "step4": "If the displayed user is correct, click Authorize.",
+    "step5": "Once the process is complete, you will be redirected back to this page. Copy the access_token value.",
+    "step6": "Open your app's config.json file and set the twitch.accessToken."
+  },
+  "result": {
+    "title": "Result"
+  },
+  "information": {
+    "title": "Information",
+    "authenticate_with_twitch": "Authenticate with Twitch",
+    "purpose": "Purpose",
+    "authorize": "Authorize",
+    "scopes": "Scopes",
+    "twitch_chat_bot": "twitch-chat-bot",
+    "twitch_chat_trans_bot": "twitch-chat-trans-bot",
+    "twitch_chat_to_3tene": "twitch-chat-to-3tene"
+  },
+  "revoke_access": {
+    "title": "Revoke Access",
+    "explanation": "Revoke a token that is no longer in use.",
+    "submit": "Submit"
+  },
+  "misc": {
+    "title": "Misc",
+    "source_page": "The source code for this page is available on "
+  },
+  "messages": {
+    "successfully": "Successfully deactivated.",
+    "failed": "Processing failed.",
+    "token_deactivation_failed": "Token deactivation failed.",
+    "status": "Status",
+    "unknown_error": "Unknown error"
+  }
+}
