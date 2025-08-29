@@ -30,5 +30,12 @@
   "misc": {
     "title": "Misc",
     "source_page": "The source code for this page is available on "
+  },
+  "messages": {
+    "successfully": "Successfully deactivated.",
+    "failed": "Processing failed.",
+    "token_deactivation_failed": "Token deactivation failed.",
+    "status": "Status",
+    "unknown_error": "Unknown error"
   }
 }

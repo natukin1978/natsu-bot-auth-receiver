@@ -84,7 +84,8 @@ function App() {
       // エラーレスポンスの内容を読み取って、より詳細なエラーメッセージを作成します。
       const errorData = await response.json();
       throw new Error(
-        `トークンの無効化に失敗しました。ステータス: ${response.status} - ${errorData.message || "不明なエラー"}`
+        // トークンの無効化に失敗しました。
+        `${t("messages.token_deactivation_failed")} ${t("messages.status")}: ${response.status} - ${errorData.message || t("messages.unknown_error")}`
       );
     }
   };
@@ -93,12 +94,14 @@ function App() {
     if (!disableToken) return;
     try {
       await revokeTwitchToken();
-      setDisableTokenMessage("正常に無効化しました。");
+      // 正常に無効化しました。
+      setDisableTokenMessage(t("messages.successfully"));
     } catch (error: unknown) {
       if (error instanceof Error) {
         setDisableTokenMessage(error.message);
       } else {
-        setDisableTokenMessage("処理に失敗しました。");
+        // 処理に失敗しました。
+        setDisableTokenMessage(t("messages.failed"));
       }
     }
   };

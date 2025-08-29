@@ -30,5 +30,12 @@
   "misc": {
     "title": "その他",
     "source_page": "このページのソースコードはこちらで公開してます。"
+  },
+  "messages": {
+    "successfully": "正常に無効化しました。",
+    "failed": "処理に失敗しました。",
+    "token_deactivation_failed": "トークンの無効化に失敗しました。",
+    "status": "ステータス",
+    "unknown_error": "不明なエラー"
   }
 }
