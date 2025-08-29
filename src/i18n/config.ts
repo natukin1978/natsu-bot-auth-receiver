@@ -15,7 +15,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    lng: "ja",
+    //lng: "ja",
     fallbackLng: "en",
     returnEmptyString: false,
     supportedLngs: Object.keys(supportedLngs),
