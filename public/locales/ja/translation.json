@@ -1,0 +1,34 @@
+{
+  "title": "ナツキソBOT OAuth認証",
+  "steps": {
+    "title": "作業手順",
+    "step1": "下の[Twitchで認証]ボタンを押してください。",
+    "step2": "Twitchのログインページが表示されたら、BOTにしたいユーザーでログインしてください。",
+    "step3": "ログインページが表示されず、違うユーザーが表示されたら、一度Twitchのページでログアウトしてください。",
+    "step4": "表示ユーザーで問題なければ、認証(Authorize)を押してください。",
+    "step5": "正常に処理が進むと、このページに戻って来るので access_token の値をコピーします。",
+    "step6": "対象アプリの config.json を開いて、twitch.accessToken に設定してください。"
+  },
+  "result": {
+    "title": "結果"
+  },
+  "information": {
+    "title": "一覧",
+    "authenticate_with_twitch": "Twitchで認証",
+    "purpose": "用途",
+    "authorize": "認証",
+    "scopes": "使用スコープ",
+    "twitch_chat_bot": "Twitchの外国語を翻訳するBOT",
+    "twitch_chat_trans_bot": "Twitchの外国語を翻訳するBOT",
+    "twitch_chat_to_3tene": "Twitchから\"3tene\"にショートカット送信"
+  },
+  "revoke_access": {
+    "title": "無効化",
+    "explanation": "使わなくなったトークンを無効化します。",
+    "submit": "送信"
+  },
+  "misc": {
+    "title": "その他",
+    "source_page": "このページのソースコードはこちらで公開してます。"
+  }
+}

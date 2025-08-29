@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
+import { useTranslation } from "react-i18next";
 import "./App.css"
-
-const text_twitch_auth = "Twitchで認証";
 
 const client_id = "g1gb6b5as9zb48wlde0v0ux3frg2i3";
 
@@ -18,34 +17,36 @@ const get_url_twitch_auth = (scopes: string[]): string => {
   return end_point + "?" + params_str;
 }
 
-const auth_infos = [
-  {
-    title: "Twitch配信チャットBOT",
-    application_link: "https://github.com/natukin1978/twitch-chat-bot",
-    scopes: [
-      "chat:read",
-      "chat:edit",
-      "moderator:manage:banned_users",
-    ],
-  },
-  {
-    title: "Twitchの外国語を翻訳するBOT",
-    application_link: "https://github.com/natukin1978/twitch-chat-trans-bot",
-    scopes: [
-      "chat:read",
-      "chat:edit",
-    ],
-  },
-  {
-    title: "Twitchから\"3tene\"にショートカット送信",
-    application_link: "https://github.com/natukin1978/twitch-chat-to-3tene",
-    scopes: [
-      "chat:read",
-    ],
-  },
-];
-
 function App() {
+  const { t } = useTranslation();
+
+  const auth_infos = [
+    {
+      title: t("information.twitch_chat_bot"),
+      application_link: "https://github.com/natukin1978/twitch-chat-bot",
+      scopes: [
+        "chat:read",
+        "chat:edit",
+        "moderator:manage:banned_users",
+      ],
+    },
+    {
+      title: t("information.twitch_chat_trans_bot"),
+      application_link: "https://github.com/natukin1978/twitch-chat-trans-bot",
+      scopes: [
+        "chat:read",
+        "chat:edit",
+      ],
+    },
+    {
+      title: t("information.twitch_chat_to_3tene"),
+      application_link: "https://github.com/natukin1978/twitch-chat-to-3tene",
+      scopes: [
+        "chat:read",
+      ],
+    },
+  ];
+
   const [accessToken, setAccessToken] = useState<string>("");
 
   const [disableToken, setDisableToken] = useState<string>("");
@@ -105,25 +106,22 @@ function App() {
   return (
     <div>
       <h2 style={{ borderBottom: "1px solid #000" }}>
-        ナツキソBOT OAuth認証
+        {t("title")}
       </h2>
       <div>
         <h3>
-          作業手順
+          {t("steps.title")}
         </h3>
         <ol>
-          <li>下の[{text_twitch_auth}]ボタンを押してください</li>
-          <li>Twitchのログインページが表示されたら、BOTにしたいユーザーでログインしてください</li>
-          <li>ログインページが表示されず、違うユーザーが表示されたら、一度Twitchのページでログアウトしてください</li>
-          <li>表示ユーザーで問題なければ、認証(Authorize)を押してください</li>
-          <li>正常に処理が進むと、このページに戻って来るので access_token の値をコピーします</li>
-          <li>対象アプリの config.json を開いて、twitch.accessToken に設定してください</li>
+          {[...Array(6)].map((_, i) => (
+            <li key={i}>{t(`steps.step${i + 1}`)}</li>
+          ))}
         </ol>
       </div>
       {accessToken && (
         <div>
           <h3>
-            結果
+            {t("result.title")}
           </h3>
           <label>
             access_token
@@ -134,20 +132,20 @@ function App() {
       )}
       <div>
         <h3>
-          一覧
+          {t("information.title")}
         </h3>
         <table>
           <thead>
             <tr>
-              <th>用途</th>
-              <th>認証</th>
-              <th>使用スコープ</th>
+              <th>{t("information.purpose")}</th>
+              <th>{t("information.authorize")}</th>
+              <th>{t("information.scopes")}</th>
             </tr>
           </thead>
           <tbody>
             {
               auth_infos.map(auth_info => (
-                <tr key={auth_info.title}>
+                <tr key={auth_info.application_link}>
                   <td>
                     <a href={auth_info.application_link} target="_blank" rel="noopener noreferrer">
                       {auth_info.title}
@@ -155,7 +153,7 @@ function App() {
                   </td>
                   <td>
                     <a href={get_url_twitch_auth(auth_info.scopes)} className="a_to_button">
-                      {text_twitch_auth}
+                      {t("information.authenticate_with_twitch")}
                     </a>
                   </td>
                   <td>
@@ -175,16 +173,18 @@ function App() {
       </div>
       <div>
         <h3>
-          無効化
+          {t("revoke_access.title")}
         </h3>
-        使わなくなったトークンを無効化します。
+        {t("revoke_access.explanation")}
         <div>
           <label>
             access_token
           </label>
           &nbsp;:&nbsp;
           <input value={disableToken} onChange={e => setDisableToken(e.target.value)} size={30} />
-          <button onClick={doDisableToken} className="button" style={{ marginLeft: "1em" }}>送信</button>
+          <button onClick={doDisableToken} className="button" style={{ marginLeft: "1em" }}>
+            {t("revoke_access.submit")}
+          </button>
         </div>
         <div>
           {disableTokenMessage}
@@ -192,9 +192,9 @@ function App() {
       </div>
       <div>
         <h3>
-          その他
+          {t("misc.title")}
         </h3>
-        このページのソースコードはこちらで公開してます。
+        {t("misc.source_page")}
         <a href="https://github.com/natukin1978/natsu-bot-auth-receiver" target="_blank" rel="noopener noreferrer">
           Github
         </a>
