@@ -18,8 +18,8 @@
     "purpose": "用途",
     "authorize": "認証",
     "scopes": "使用スコープ",
-    "twitch_chat_bot": "Twitchの外国語を翻訳するBOT",
-    "twitch_chat_trans_bot": "Twitchの外国語を翻訳するBOT",
+    "twitch_chat_bot": "TwitchチャットBOT",
+    "twitch_chat_trans_bot": "Twitch翻訳BOT",
     "twitch_chat_to_3tene": "Twitchから\"3tene\"にショートカット送信"
   },
   "revoke_access": {
