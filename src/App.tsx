@@ -2,50 +2,55 @@ import { useState, useEffect } from "react"
 import { useTranslation } from "react-i18next";
 import "./App.css"
 
-const client_id = "g1gb6b5as9zb48wlde0v0ux3frg2i3";
+const REDIRECT_URI = "https://natukin1978.github.io/natsu-bot-auth-receiver/";
+const SOURCE_URI = "https://github.com/natukin1978/natsu-bot-auth-receiver";
 
-const get_url_twitch_auth = (scopes: string[]): string => {
+const CLIENT_ID = {
+  TWITCH: "g1gb6b5as9zb48wlde0v0ux3frg2i3",
+};
+
+const AUTH_INFOS = [
+  {
+    title: "information.twitch_chat_bot",
+    application_link: "https://github.com/natukin1978/twitch-chat-bot",
+    scopes: [
+      "chat:read",
+      "chat:edit",
+      "moderator:manage:banned_users",
+    ],
+  },
+  {
+    title: "information.twitch_chat_trans_bot",
+    application_link: "https://github.com/natukin1978/twitch-chat-trans-bot",
+    scopes: [
+      "chat:read",
+      "chat:edit",
+    ],
+  },
+  {
+    title: "information.twitch_chat_to_3tene",
+    application_link: "https://github.com/natukin1978/twitch-chat-to-3tene",
+    scopes: [
+      "chat:read",
+    ],
+  },
+];
+
+const getUrlTwitchAuth = (scopes: string[]): string => {
   const scope = scopes.join(" ");
   const params = {
-    client_id: client_id,
-    redirect_uri: "https://natukin1978.github.io/natsu-bot-auth-receiver/",
+    client_id: CLIENT_ID.TWITCH,
+    redirect_uri: REDIRECT_URI,
     response_type: "token",
     scope: scope,
   }
   const end_point = "https://id.twitch.tv/oauth2/authorize";
   const params_str = new URLSearchParams(params).toString();
   return end_point + "?" + params_str;
-}
+};
 
 function App() {
   const { t } = useTranslation();
-
-  const auth_infos = [
-    {
-      title: t("information.twitch_chat_bot"),
-      application_link: "https://github.com/natukin1978/twitch-chat-bot",
-      scopes: [
-        "chat:read",
-        "chat:edit",
-        "moderator:manage:banned_users",
-      ],
-    },
-    {
-      title: t("information.twitch_chat_trans_bot"),
-      application_link: "https://github.com/natukin1978/twitch-chat-trans-bot",
-      scopes: [
-        "chat:read",
-        "chat:edit",
-      ],
-    },
-    {
-      title: t("information.twitch_chat_to_3tene"),
-      application_link: "https://github.com/natukin1978/twitch-chat-to-3tene",
-      scopes: [
-        "chat:read",
-      ],
-    },
-  ];
 
   const [accessToken, setAccessToken] = useState<string>("");
 
@@ -67,7 +72,7 @@ function App() {
 
     // 送信するデータをURLエンコード形式で準備します。
     const params = new URLSearchParams();
-    params.append("client_id", client_id);
+    params.append("client_id", CLIENT_ID.TWITCH);
     params.append("token", disableToken);
 
     const response = await fetch(end_point, {
@@ -147,15 +152,15 @@ function App() {
           </thead>
           <tbody>
             {
-              auth_infos.map(auth_info => (
+              AUTH_INFOS.map(auth_info => (
                 <tr key={auth_info.application_link}>
                   <td>
                     <a href={auth_info.application_link} target="_blank" rel="noopener noreferrer">
-                      {auth_info.title}
+                      {t(auth_info.title)}
                     </a>
                   </td>
                   <td>
-                    <a href={get_url_twitch_auth(auth_info.scopes)} className="a_to_button">
+                    <a href={getUrlTwitchAuth(auth_info.scopes)} className="a_to_button">
                       {t("information.authenticate_with_twitch")}
                     </a>
                   </td>
@@ -198,7 +203,7 @@ function App() {
           {t("misc.title")}
         </h3>
         {t("misc.source_page")}
-        <a href="https://github.com/natukin1978/natsu-bot-auth-receiver" target="_blank" rel="noopener noreferrer">
+        <a href={SOURCE_URI} target="_blank" rel="noopener noreferrer">
           Github
         </a>
       </div>
