@@ -111,6 +111,8 @@ function App() {
     }
   };
 
+  const steps_text_values = t("steps.text_values", { returnObjects: true }) as string[];
+
   return (
     <div>
       <h2 style={{ borderBottom: "1px solid #000" }}>
@@ -121,8 +123,8 @@ function App() {
           {t("steps.title")}
         </h3>
         <ol>
-          {[...Array(6)].map((_, i) => (
-            <li key={i}>{t(`steps.step${i + 1}`)}</li>
+          {steps_text_values.map(value => (
+            <li key={value}>{value}</li>
           ))}
         </ol>
       </div>

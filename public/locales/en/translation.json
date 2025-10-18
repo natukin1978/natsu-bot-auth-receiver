@@ -2,12 +2,14 @@
   "title": "Natukiso BOT OAuth Authentication",
   "steps": {
     "title": "Steps",
-    "step1": "Click the [Authenticate with Twitch] button below.",
-    "step2": "When the Twitch login page appears, log in with the account you want to use for the bot.",
-    "step3": "If the login page doesn't appear and a different user is shown, log out from the Twitch website first.",
-    "step4": "If the displayed user is correct, click Authorize.",
-    "step5": "Once the process is complete, you will be redirected back to this page. Copy the access_token value.",
-    "step6": "Open your app's config.json file and set the twitch.accessToken."
+    "text_values": [
+      "Click the [Authenticate with Twitch] button below.",
+      "When the Twitch login page appears, log in with the account you want to use for the bot.",
+      "If the login page doesn't appear and a different user is shown, log out from the Twitch website first.",
+      "If the displayed user is correct, click Authorize.",
+      "Once the process is complete, you will be redirected back to this page. Copy the access_token value.",
+      "Open your app's config.json file and set the twitch.accessToken."
+    ]
   },
   "result": {
     "title": "Result"
